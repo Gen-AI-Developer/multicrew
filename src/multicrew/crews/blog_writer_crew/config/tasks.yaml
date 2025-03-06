@@ -1,0 +1,7 @@
+write_blog:
+  description: > 
+    write a blog post for the layout of {layout} and the post should be detailed
+    and informative in a professinal tone.
+  expected_output: >
+    A detailed easy to understand blog post for the layout of {layout}.
+  agent: blog_writer

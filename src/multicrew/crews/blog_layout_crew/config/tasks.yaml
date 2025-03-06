@@ -1,0 +1,7 @@
+write_blog_layout:
+  description: > 
+    write a blog outline for the topic of {topic} and the outline should be detailed
+    and SEO Friendly.
+  expected_output: >
+    A detailed easy to understand blog outline for the topic of {topic} and SEO Friendly.
+  agent: blog_layout_writer

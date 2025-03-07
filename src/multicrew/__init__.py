@@ -17,14 +17,17 @@ class Blog(Flow[BlogState]):
     
     @listen(blogtopic)
     def generate_bloglayout(self) -> str:
-        result = BlogLayoutCrew().crew().kickoff(inputs={'topic': self.blogtopic,'outline':self.bloglayout})
+        result = BlogLayoutCrew().crew().kickoff(inputs={'topic': self.blogtopic,})
         self.bloglayout = result.raw
         return result.raw
     
     @listen(generate_bloglayout)
     def generate_blogpost(self) -> str:
-        self.blogpost = BlogWriterCrew().crew().kickoff(inputs={'layout': self.bloglayout})
-        return self.blogpost
+        result = BlogWriterCrew().crew().kickoff(inputs={'layout': self.bloglayout})
+        self.blogpost = result
+        with open(f'{self.blogtopic}blog.md', 'w') as f:
+            f.write(result.raw)
+        return result.raw
 
 def kickoff():
     blog = Blog()

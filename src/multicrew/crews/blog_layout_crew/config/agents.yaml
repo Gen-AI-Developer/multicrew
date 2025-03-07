@@ -8,14 +8,16 @@ blog_layout_writer:
     You have 10 years experience of content writing on topic {topic} and 
     explain every thing step by step in a systemic way. You are responsible
      for generating outline for blog posts.
+  allow_delegation: true
 
 blog_layout_verifier:
   role: >
     Professional Outline Verifier
   goal: >
-    You are expert of checking grammer and composition of outline {outline}.
+    You are expert of checking grammer and composition of outline.
   backstory: >
     You have 10 years experience of checking and verifying writings and 
-    checking grammer and composition of outline of the outline {outline} and 
+    checking grammer and composition of outline of the outline and 
     also check every thing step by step in a systemic way. You are responsible
     for generating  outline for blog posts.
+  allow_delegation: true

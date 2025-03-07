@@ -8,8 +8,10 @@ write_blog_layout:
 
 verify_blog_layout:
   description: > 
-    verify blog outline for the outline of {outline} and the outline should be detailed
+    verify blog outline for the outline of and the outline should be detailed
     and SEO Friendly.
   expected_output: >
-    A detailed easy to understand blog outline for the layout of {layout} and SEO Friendly.
+    A detailed easy to understand blog outline for the layout of and SEO Friendly.
+  context: [write_blog_layout]
+    
   agent: blog_layout_verifier

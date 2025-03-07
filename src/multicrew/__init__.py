@@ -17,7 +17,7 @@ class Blog(Flow[BlogState]):
     
     @listen(blogtopic)
     def generate_bloglayout(self) -> str:
-        result = BlogLayoutCrew().crew().kickoff(inputs={'topic': self.blogtopic})
+        result = BlogLayoutCrew().crew().kickoff(inputs={'topic': self.blogtopic,'outline':self.bloglayout})
         self.bloglayout = result.raw
         return result.raw
     

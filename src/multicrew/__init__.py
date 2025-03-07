@@ -26,7 +26,9 @@ class Blog(Flow[BlogState]):
         result = BlogWriterCrew().crew().kickoff(inputs={'layout': self.bloglayout})
         self.blogpost = result
         with open(f'{self.blogtopic}blog.md', 'w') as f:
+            print(f"Saving ...  {self.blogtopic}")
             f.write(result.raw)
+            print(f':Saved:')
         return result.raw
 
 def kickoff():

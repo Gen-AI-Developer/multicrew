@@ -5,7 +5,7 @@ class BlogLayoutCrew:
     """ Crew Base Class"""
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
-
+    # print(agents_config, tasks_config)
     @agent
     def blog_layout_writer(self) ->Agent:
         return Agent(
@@ -17,6 +17,17 @@ class BlogLayoutCrew:
         return Task(
             config=self.tasks_config['write_blog_layout'],   
         ) 
+    # @agent
+    # def blog_layout_verifier(self) ->Agent:
+    #     return Agent(
+    #         config=self.agents_config['blog_layout_verifier']
+    #     )
+
+    # @task
+    # def verify_blog_layout(self) -> Task:
+    #     return Task(
+    #         config=self.tasks_config['verify_blog_layout'],   
+    #     ) 
     @crew
     def crew(self) -> Crew:
         """Creates the  Crew for the Blog Layout Agent/Task"""

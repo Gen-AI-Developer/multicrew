@@ -1,5 +1,5 @@
 from crewai.project import CrewBase, agent, task,crew
-from crewai import Agent, Task, Process, Crew
+from crewai import LLM, Agent, Task, Process, Crew
 
 @CrewBase
 class BlogWriterCrew:
@@ -10,7 +10,7 @@ class BlogWriterCrew:
     @agent
     def blog_writer(self) ->Agent:
         return Agent(
-            config=self.agents_config['blog_writer']
+            config=self.agents_config['blog_writer'],
         )
 
     @task

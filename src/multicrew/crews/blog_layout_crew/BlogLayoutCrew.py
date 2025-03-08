@@ -1,16 +1,25 @@
 from crewai.project import CrewBase, agent, task,crew
-from crewai import Agent, Task, Process, Crew
+from crewai import LLM, Agent, Task, Process, Crew
+import os
+api_key = os.getenv('GEMINI_API_KEY')
 @CrewBase
 class BlogLayoutCrew:
     """ Crew Base Class"""
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
+
+    llmm = LLM(
+        model="gemini/gemini-1.5-flash",
+        temperature=0.7,
+        # vertex_credentials=vertex_credentials_json
+    )
     # print(agents_config, tasks_config)
     @agent
     def blog_layout_writer(self) ->Agent:
         """Blog Layout Writer Agent"""
         return Agent(
-            config=self.agents_config['blog_layout_writer']
+            config=self.agents_config['blog_layout_writer'],
+             llm=self.llmm,
         )
 
 
@@ -18,7 +27,7 @@ class BlogLayoutCrew:
     def blog_layout_verifier(self) ->Agent:
         """ Blog Verifier Agent"""
         return Agent(
-            config=self.agents_config['blog_layout_verifier']
+            config=self.agents_config['blog_layout_verifier'],
         )
     @task
     def write_blog_layout(self) -> Task:
